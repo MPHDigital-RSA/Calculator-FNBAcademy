@@ -21,15 +21,15 @@ body {
     background-color: rgb(83, 83, 83);
 
     display: grid;
-    gap: 2px;
+    gap: 4px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "displays displays displays displays"
         "seven eight nine mult"
         "four five six minus"
         "one two three plus"
-        "ze ze AC div"
-        "equals equals equals equals";
+        "ze negate coma div"
+        "equals equals equals AC";
 }
 
 button {
@@ -79,13 +79,22 @@ button {
     margin-bottom: 5px;
 } */
 
-.digit {
+.digit,
+.coma,
+.negate {
     background-color: grey;
     color: white;
 }
 
-.digit:hover {
+.digit:hover,
+.coma:hover,
+.negate:hover {
     background-color: rgb(117, 116, 116);
+}
+
+.negate {
+    grid-area: negate;
+    font-size: 12px
 }
 
 .operator {
@@ -113,6 +122,10 @@ button {
     color: white;
 
     grid-area: equals;
+}
+
+.coma {
+    grid-area: coma;
 }
 
 .equals:hover {

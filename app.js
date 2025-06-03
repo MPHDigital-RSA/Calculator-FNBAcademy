@@ -1,7 +1,8 @@
 // DOM references
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
-const display = document.getElementById("display-screen");
+const numberDisplay = document.getElementById("display-screen");
+const expressionDisplay = document.getElementById("expression-screen");
 const equalTo = document.querySelector(".equals");
 const AC = document.querySelector(".AC");
 
@@ -11,6 +12,7 @@ let value1 = 0;
 let value2 = 0;
 let totalValue = 0;
 let selectedOperator = "";
+let expression = "";
 
 // event listeners
 
@@ -19,11 +21,12 @@ digits.forEach((digit) => {
         const digitValue = digit.dataset.value;
 
         if (isDisplayEmpty) {
-            display.value = digitValue;
+            numberDisplay.value = digitValue;
             isDisplayEmpty = false;
+            // expressionDisplay.value = "";
         } else {
             // display.value = display.value + digitValue;
-            display.value += digitValue;
+            numberDisplay.value += digitValue;
         }
     })
 })
@@ -31,8 +34,9 @@ digits.forEach((digit) => {
 operators.forEach((operator) => {
     operator.addEventListener("click", () => {
         isDisplayEmpty = true;
-        value1 = parseInt(display.value);
+        value1 = parseInt(numberDisplay.value);
         selectedOperator = operator.dataset.value;
+        expressionDisplay.value = value1.toString() + " " + selectedOperator;
 
         console.log(value1);
         console.log(selectedOperator);
@@ -40,8 +44,8 @@ operators.forEach((operator) => {
 })
 
 equalTo.addEventListener("click", () => {
-    value2 = parseInt(display.value);
-
+    value2 = parseInt(numberDisplay.value);
+    expressionDisplay.value = expressionDisplay.value + " " + value2.toString() + " " + "=";
     if (selectedOperator == "+") {
         totalValue = value1 + value2;
     } else if (selectedOperator == "-") {
@@ -52,11 +56,12 @@ equalTo.addEventListener("click", () => {
         totalValue = value1 / value2;
     }
 
-    display.value = totalValue;
+    numberDisplay.value = totalValue;
     isDisplayEmpty = true;
 })
 
 AC.addEventListener("click", () => {
     isDisplayEmpty = true;
-    display.value = "0";
+    expressionDisplay.value = "";
+    numberDisplay.value = "0";
 })
