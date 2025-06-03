@@ -37,7 +37,7 @@ button {
     align-items: center;
     justify-content: center;
     border: none;
-    height: 40px;
+    height: 60px;
     font-size: 1.1em;
     border-radius: 4px;
     cursor: pointer;
@@ -62,10 +62,11 @@ button {
 
 .displays input:nth-child(1) {
     color: #9b988f;
+    font-size: 1.5em;
 }
 
 .displays input:nth-child(2) {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .digit,
