@@ -7,7 +7,8 @@ const equalTo = document.querySelector(".equals");
 const AC = document.querySelector(".AC");
 
 // variables
-let isDisplayEmpty = true;
+let isNumberDisplayEmpty = true;
+let isExpressionDisplayOn = true;
 let value1 = 0;
 let value2 = 0;
 let totalValue = 0;
@@ -18,34 +19,48 @@ let expression = "";
 
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
+        // grab the digit value from the dataset of the pressed key!
         const digitValue = digit.dataset.value;
+        // set isExpressionDisplayOn to true
+        isExpressionDisplayOn = true;
 
-        if (isDisplayEmpty) {
+        // if the display has zero replace the zero with the digit value, otherwise append the digit value to the existing number.
+        if (isNumberDisplayEmpty) {
             numberDisplay.value = digitValue;
-            isDisplayEmpty = false;
-            // expressionDisplay.value = "";
+            // on the next 
+            isNumberDisplayEmpty = false;
         } else {
-            // display.value = display.value + digitValue;
             numberDisplay.value += digitValue;
         }
     })
 })
 
 operators.forEach((operator) => {
+    // add an event listener to every operator
     operator.addEventListener("click", () => {
-        isDisplayEmpty = true;
+
+        // set the isNumberDisplayEmpty to (true) -- get the number display value and convert to a number and store in a variable (value1) -- grab the pressed operator and save in a variable (selectedOperator).
+        isNumberDisplayEmpty = true;
         value1 = parseInt(numberDisplay.value);
         selectedOperator = operator.dataset.value;
-        expressionDisplay.value = value1.toString() + " " + selectedOperator;
 
-        console.log(value1);
-        console.log(selectedOperator);
+        // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator)
+        if (isExpressionDisplayOn) {
+            expressionDisplay.value = value1.toString() + " " + selectedOperator;
+        }
     })
 })
 
 equalTo.addEventListener("click", () => {
+    // grab the input current value and save into the variable (value2) 
     value2 = parseInt(numberDisplay.value);
-    expressionDisplay.value = expressionDisplay.value + " " + value2.toString() + " " + "=";
+
+    // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator) and (value2)
+    if (isExpressionDisplayOn) {
+        expressionDisplay.value = expressionDisplay.value + " " + value2.toString() + " " + "=";
+    }
+
+    // perfom the calculation based on the selected operator
     if (selectedOperator == "+") {
         totalValue = value1 + value2;
     } else if (selectedOperator == "-") {
@@ -56,12 +71,16 @@ equalTo.addEventListener("click", () => {
         totalValue = value1 / value2;
     }
 
+    // set the numberDisplay value to the total value
     numberDisplay.value = totalValue;
-    isDisplayEmpty = true;
+    // set the isNumberDisplayEmpty true
+    isNumberDisplayEmpty = true;
+    // set isExpressionDisplayOn to false 
+    isExpressionDisplayOn = false;
 })
 
 AC.addEventListener("click", () => {
-    isDisplayEmpty = true;
+    isNumberDisplayEmpty = true;
     expressionDisplay.value = "";
     numberDisplay.value = "0";
 })
