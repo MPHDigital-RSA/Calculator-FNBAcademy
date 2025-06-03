@@ -1,0 +1,152 @@
+* {
+    font-family: Poppins, 'Courier New', Courier, monospace;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d5cfbc;
+}
+
+.calculator {
+    box-sizing: border-box;
+    max-width: 300px;
+    width: 100%;
+    padding: 20px;
+
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "display display display display"
+        "seven eight nine mult"
+        "four five six minus"
+        "one two three plus"
+        "ze ze AC div"
+        "equals equals equals equals";
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 40px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#display-screen {
+    background-color: rgb(83, 83, 83);
+    padding: 10px;
+    color: white;
+    font-size: 2em;
+    text-align: right;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 5px;
+
+    grid-area: display;
+}
+
+.digit {
+    background-color: grey;
+    color: white;
+}
+
+.digit:hover {
+    background-color: rgb(85, 85, 85);
+}
+
+.operator {
+    background-color: #f6a925;
+    color: white;
+}
+
+.operator:hover {
+    background-color: #c68006;
+}
+
+.AC {
+    background-color: rgb(83, 83, 83);
+    color: white;
+
+    grid-area: AC;
+}
+
+.AC:hover {
+    background-color: rgba(83, 83, 83, 0.903);
+}
+
+.equals {
+    background-color: #f6a925;
+    color: white;
+
+    grid-area: equals;
+}
+
+.equals:hover {
+    background-color: #c68006;
+}
+
+.digit[data-value="0"] {
+    grid-area: ze;
+}
+
+.digit[data-value="1"] {
+    grid-area: one;
+}
+
+.digit[data-value="2"] {
+    grid-area: two;
+}
+
+.digit[data-value="3"] {
+    grid-area: three;
+}
+
+.digit[data-value="4"] {
+    grid-area: four;
+}
+
+.digit[data-value="5"] {
+    grid-area: five;
+}
+
+.digit[data-value="6"] {
+    grid-area: six;
+}
+
+.digit[data-value="7"] {
+    grid-area: seven;
+}
+
+.digit[data-value="8"] {
+    grid-area: eight;
+}
+
+.digit[data-value="9"] {
+    grid-area: nine;
+}
+
+.operator[data-value="+"] {
+    grid-area: plus;
+}
+
+.operator[data-value="-"] {
+    grid-area: minus;
+}
+
+.operator[data-value="*"] {
+    grid-area: mult;
+}
+
+.operator[data-value="÷"] {
+    grid-area: div;
+}
