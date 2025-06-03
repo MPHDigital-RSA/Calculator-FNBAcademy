@@ -63,12 +63,12 @@ button {
 
 .displays input:nth-child(1) {
     color: #9b988f;
-    font-size: .8em;
+    font-size: 1.2em;
 }
 
 .displays input:nth-child(2) {
-    font-size: 1.4em;
-    font-weight: 900;
+    font-size: 2em;
+    font-weight: 600;
 }
 
 .digit,
