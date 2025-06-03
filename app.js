@@ -41,7 +41,7 @@ operators.forEach((operator) => {
 
         // set the isNumberDisplayEmpty to (true) -- get the number display value and convert to a number and store in a variable (value1) -- grab the pressed operator and save in a variable (selectedOperator).
         isNumberDisplayEmpty = true;
-        value1 = parseInt(numberDisplay.value);
+        value1 = parseFloat(numberDisplay.value);
         selectedOperator = operator.dataset.value;
 
         // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator)
@@ -53,7 +53,7 @@ operators.forEach((operator) => {
 
 equalTo.addEventListener("click", () => {
     // grab the input current value and save into the variable (value2) 
-    value2 = parseInt(numberDisplay.value);
+    value2 = parseFloat(numberDisplay.value);
 
     // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator) and (value2)
     if (isExpressionDisplayOn) {
