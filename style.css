@@ -16,13 +16,15 @@ body {
     box-sizing: border-box;
     max-width: 300px;
     width: 100%;
-    padding: 20px;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: rgb(83, 83, 83);
 
     display: grid;
     gap: 2px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-        "display display display display"
+        "displays displays displays displays"
         "seven eight nine mult"
         "four five six minus"
         "one two three plus"
@@ -41,9 +43,33 @@ button {
     cursor: pointer;
 }
 
-#display-screen {
-    background-color: rgb(83, 83, 83);
-    padding: 10px;
+.displays {
+    grid-area: displays;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px 5px 0px 5px;
+}
+
+.displays input {
+    text-align: right;
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.displays input:nth-child(1) {
+    color: #9b988f;
+}
+
+.displays input:nth-child(2) {
+    font-size: 2em;
+}
+
+/* #display-screen {
+
     color: white;
     font-size: 2em;
     text-align: right;
@@ -51,9 +77,7 @@ button {
     border-radius: 4px;
     outline: none;
     margin-bottom: 5px;
-
-    grid-area: display;
-}
+} */
 
 .digit {
     background-color: grey;
@@ -61,7 +85,7 @@ button {
 }
 
 .digit:hover {
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(117, 116, 116);
 }
 
 .operator {
@@ -70,18 +94,18 @@ button {
 }
 
 .operator:hover {
-    background-color: #c68006;
+    background-color: #de8f07;
 }
 
 .AC {
-    background-color: rgb(83, 83, 83);
+    background-color: rgb(248, 101, 101);
     color: white;
 
     grid-area: AC;
 }
 
 .AC:hover {
-    background-color: rgba(83, 83, 83, 0.903);
+    background-color: rgba(248, 101, 101, 0.749);
 }
 
 .equals {
