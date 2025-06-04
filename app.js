@@ -84,3 +84,64 @@ AC.addEventListener("click", () => {
     expressionDisplay.value = "";
     numberDisplay.value = "0";
 })
+
+// event listeners for key board characters
+
+window.addEventListener("keypress", (key) => {
+    if (key.key >= 0 && key.key <= 9 || key.key === ".") {
+        // grab the digit value from the dataset of the pressed key!
+        const digitValue = key.key;
+        // set isExpressionDisplayOn to true
+        isExpressionDisplayOn = true;
+
+        // if the display has zero replace the zero with the digit value, otherwise append the digit value to the existing number.
+        if (isNumberDisplayEmpty) {
+            numberDisplay.value = digitValue;
+            // on the next 
+            isNumberDisplayEmpty = false;
+        } else {
+            numberDisplay.value += digitValue;
+        }
+    } else if (key.key === "Enter") {
+        // enter key is our equals to
+
+        // grab the input current value and save into the variable (value2) 
+        value2 = parseFloat(numberDisplay.value);
+
+        // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator) and (value2)
+        if (isExpressionDisplayOn) {
+            expressionDisplay.value = expressionDisplay.value + " " + value2.toString() + " " + "=";
+        }
+
+        // perfom the calculation based on the selected operator
+        if (selectedOperator == "+") {
+            totalValue = value1 + value2;
+        } else if (selectedOperator == "-") {
+            totalValue = value1 - value2;
+        } else if (selectedOperator == "*") {
+            totalValue = value1 * value2;
+        } else {
+            totalValue = value1 / value2;
+        }
+
+        // set the numberDisplay value to the total value
+        numberDisplay.value = totalValue;
+        // set the isNumberDisplayEmpty true
+        isNumberDisplayEmpty = true;
+        // set isExpressionDisplayOn to false 
+        isExpressionDisplayOn = false;
+    } else if (key.key === "-" || key.key === "/" || key.key === "+" || key.key === "*") {
+        // set the isNumberDisplayEmpty to (true) -- get the number display value and convert to a number and store in a variable (value1) -- grab the pressed operator and save in a variable (selectedOperator).
+        isNumberDisplayEmpty = true;
+        value1 = parseFloat(numberDisplay.value);
+        selectedOperator = key.key;
+
+        // if isExpressionDisplayOn is true set the expressionDisplay value to the expression of the (value1) and (selectedOperator)
+        if (isExpressionDisplayOn) {
+            expressionDisplay.value = value1.toString() + " " + selectedOperator;
+        }
+    } else {
+        console.log("useless key pressed")
+        console.log(key.key)
+    }
+})
